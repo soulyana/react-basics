@@ -28,6 +28,17 @@ class App extends Component {
     });
   };
 
+  // two-way binding
+  nameChangedHandler = (event) => {
+    this.setState({
+      persons: [
+        { name: 'Max', age: 28 },
+        { name: event.target.value, age: 29 },
+        { name: 'Stephanie', age: 26 }
+      ]
+    });
+  }
+
   render() {
     return (
       // Only 1 root element that you return
@@ -42,7 +53,8 @@ class App extends Component {
         <Person 
           name={this.state.persons[1].name} 
           age={this.state.persons[1].age}
-          click={this.switchNameHandler.bind(this, 'Max!')}>My Hobbies: Racing</Person>
+          click={this.switchNameHandler.bind(this, 'Max!')}
+          changed={this.nameChangedHandler}>My Hobbies: Racing</Person>
         <Person 
           name={this.state.persons[2].name} 
           age={this.state.persons[2].age} />

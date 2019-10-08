@@ -42,7 +42,7 @@ class App extends Component {
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState({showPersons: !doesShow});
+    this.setState({ showPersons: !doesShow });
   }
 
   render() {
@@ -56,16 +56,10 @@ class App extends Component {
       cursor: 'pointer'
     };
 
+    let persons = null;
 
-    return (
-      // Only 1 root element that you return
-      <div className="App">
-        <h1>Hi, I'm a react app</h1>
-        <p>This is really working</p>
-        {/* pass a reference dont use () b/c it'll execute immediately */}
-        <button style={style}
-          onClick={this.togglePersonsHandler}>Switch Name</button>
-        {this.state.showPersons ? 
+    if (this.state.showPersons) {
+      persons = (
         <div>
           <Person
             name={this.state.persons[0].name}
@@ -78,8 +72,19 @@ class App extends Component {
           <Person
             name={this.state.persons[2].name}
             age={this.state.persons[2].age} />
-        </div> : null
-        }
+        </div>
+      );
+    }
+
+    return (
+      // Only 1 root element that you return
+      <div className="App">
+        <h1>Hi, I'm a react app</h1>
+        <p>This is really working</p>
+        {/* pass a reference dont use () b/c it'll execute immediately */}
+        <button style={style}
+          onClick={this.togglePersonsHandler}>Switch Name</button>
+        {persons}
       </div>
     );
   }

@@ -40,13 +40,25 @@ class App extends Component {
   }
 
   render() {
+    //inline styles restrict ability to use full css features
+    // use to scope to a style and only applies to a single el
+    const style = { 
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }; 
+
+
     return (
       // Only 1 root element that you return
       <div className="App">
         <h1>Hi, I'm a react app</h1>
         <p>This is really working</p>
         {/* pass a reference dont use () b/c it'll execute immediately */}
-        <button onClick={() => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
+        <button style={style}
+        onClick={() => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
         <Person 
           name={this.state.persons[0].name} 
           age={this.state.persons[0].age} />

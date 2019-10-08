@@ -5,14 +5,23 @@ import Person from './Person/Person'; // omit js becaue added by build workflow
 class App extends Component {
   state = {
     persons: [
-      { name: 'Maxine', age: 28 },
+      { name: 'Max', age: 28 },
       { name: 'Manu', age: 29 },
       { name: 'Stephanie', age: 26}
-    ]
+    ],
+    otherState: 'some other value'
   }
   //event handler for onClick
   switchNameHandler = () => {
-    console.log('Was clicked');
+    // console.log('Was clicked');
+    // DONT DO THIS: this.state.persons[0].name = 'Maximilian';
+    this.setState({
+      persons: [
+          { name: 'Maxine', age: 28 },
+          { name: 'Manu', age: 29 },
+          { name: 'Souly', age: 31}
+        ]
+    })
   }
 
   render() {

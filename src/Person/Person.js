@@ -3,8 +3,8 @@
 // function name is lowercase and same name as componenet
 import React from 'react';
 
-const person = () => {
-    return <p>I'm a person and I am {Math.floor(Math.random() * 20)} years old!</p>
-}
+const person = (props) => {
+    return <p>I'm a {props.name} and I am {props.age} years old!</p>
+};
 
 export default person;

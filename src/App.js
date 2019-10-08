@@ -10,13 +10,19 @@ class App extends Component {
       { name: 'Stephanie', age: 26}
     ]
   }
+  //event handler for onClick
+  switchNameHandler = () => {
+    console.log('Was clicked');
+  }
+
   render() {
     return (
       // Only 1 root element that you return
       <div className="App">
         <h1>Hi, I'm a react app</h1>
         <p>This is really working</p>
-        <button>Switch Name</button>
+        {/* pass a reference dont use () b/c itll execute immediately */}
+        <button onClick={this.switchNameHandler}>Switch Name</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My Hobbies: Racing</Person>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>

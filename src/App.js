@@ -26,8 +26,10 @@ class App extends Component {
     });
   }
 
+  //immutable state update
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    // const persons = this.state.persons.slice(); // new copy
+    const persons = [...this.state.persons]; // new copied array
     persons.splice(personIndex, 1);
     this.setState({persons: persons});
   }

@@ -76,11 +76,20 @@ class App extends Component {
       style.backgroundColor = 'red';
     }
 
+    // let classes = ['red', 'bold'].join(' '); //becomes valid css class list
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
+    }
+
     return (
       // Only 1 root element that you return
       <div className="App">
         <h1>Hi, I'm a react app</h1>
-        <p>This is really working</p>
+        <p className={classes.join(' ')}>This is really working</p>
         {/* pass a reference dont use () b/c it'll execute immediately */}
         <button style={style}
           onClick={this.togglePersonsHandler}>Switch Name</button>

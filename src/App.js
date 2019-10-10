@@ -24,8 +24,8 @@ class App extends Component {
 
     // new obj copy with old obj info
     const person = {...this.state.persons[personIndex]};
+    // person.name = event.input.value;//error
     person.name = event.target.value;
-    
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 

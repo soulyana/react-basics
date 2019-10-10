@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person'; // omit js becaue added by build workflow
-import Radium, { StyleRoot } from 'radium';
+// import Radium, { StyleRoot } from 'radium';
 
 //stateful "smart", "container" components b/c they contain state of app. Only have a few > easier to maintain 
 
@@ -50,20 +50,21 @@ class App extends Component {
   render() {
     //inline styles restrict ability to use full css features
     // use to scope to a style and only applies to a single el
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    };
+    // const style = {
+    //   backgroundColor: 'green',
+    //   color: 'white',
+    //   font: 'inherit',
+    //   border: '1px solid blue',
+    //   padding: '8px',
+    //   cursor: 'pointer'
+    //   // ':hover': {
+    //   //   backgroundColor: 'lightgreen',
+    //   //   color: 'black'
+    //   // }
+    // };
 
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = (
@@ -78,37 +79,47 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'lightred',
-        color: 'black'
-      };
+      // style.backgroundColor = 'red';
+      // style[':hover'] = {
+      //   backgroundColor: 'lightred',
+      //   color: 'black'
+      // };
     }
 
     // let classes = ['red', 'bold'].join(' '); //becomes valid css class list
-    const classes = [];
-    if (this.state.persons.length <= 2) {
-      classes.push('red');
+    // const classes = [];
+    // if (this.state.persons.length <= 2) {
+    //   classes.push('red');
+    // }
+    // if (this.state.persons.length <= 1) {
+    //   classes.push('bold');
+    // }
+
+    const assignedClasses = [];
+    if (this.state.persons.length <= 2 ) {
+      assignedClasses.push(classes.red); 
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
     return (
       // Only 1 root element that you return
-      <StyleRoot>
-      <div className="App">
+      // {/* <StyleRoot> */}
+      <div className={classes.App}>
         <h1>Hi, I'm a react app</h1>
-        <p className={classes.join(' ')}>This is really working</p>
+        <p className={assignedClasses.join(' ')}>This is really working</p>
         {/* pass a reference dont use () b/c it'll execute immediately */}
-        <button style={style}
+        <button className={btnClass}
+      //  {/* style={style} */}
           onClick={this.togglePersonsHandler}>Switch Name</button>
         {persons}
       </div>
-      </StyleRoot>
+      // {/* </StyleRoot> */}
     );
   }
 }
 
 
-export default Radium(App);
+export default App;
+// export default Radium(App);

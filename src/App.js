@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'; // omit js becaue added by build workflow
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 
 //stateful "smart", "container" components b/c they contain state of app. Only have a few > easier to maintain 
 
@@ -96,6 +96,7 @@ class App extends Component {
 
     return (
       // Only 1 root element that you return
+      <StyleRoot>
       <div className="App">
         <h1>Hi, I'm a react app</h1>
         <p className={classes.join(' ')}>This is really working</p>
@@ -104,6 +105,7 @@ class App extends Component {
           onClick={this.togglePersonsHandler}>Switch Name</button>
         {persons}
       </div>
+      </StyleRoot>
     );
   }
 }

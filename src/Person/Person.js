@@ -3,6 +3,7 @@
 // function name is lowercase and same name as componenet
 // stateless "dumb", "presentational" component b/c it has no internal state mgmt
 import React from 'react';
+import Radium from 'radium';
 import './Person.css';
 
 const person = (props) => {
@@ -15,4 +16,4 @@ const person = (props) => {
     )
 };
 
-export default person;
+export default Radium(person);

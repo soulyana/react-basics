@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'; // omit js becaue added by build workflow
+import Radium from 'radium';
 
 //stateful "smart", "container" components b/c they contain state of app. Only have a few > easier to maintain 
 
@@ -55,7 +56,11 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
 
     let persons = null;
@@ -74,6 +79,10 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'lightred',
+        color: 'black'
+      };
     }
 
     // let classes = ['red', 'bold'].join(' '); //becomes valid css class list
@@ -100,4 +109,4 @@ class App extends Component {
 }
 
 
-export default App;
+export default Radium(App);

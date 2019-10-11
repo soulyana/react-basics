@@ -13,6 +13,9 @@ const person = (props) => {
     //     }
     // };
     // {/* <div className="Person" style={style}> */ }
+    const rnd = Math.random();
+
+    if ( rnd > 0.7)
     return (
         < div className={classes.Person} >
             <p onClick={props.click}>I'm a {props.name} and I am {props.age} years old!</p>

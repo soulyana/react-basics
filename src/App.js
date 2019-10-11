@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Person from './Person/Person'; // omit js becaue added by build workflow
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 // import Radium, { StyleRoot } from 'radium';
 
 //stateful "smart", "container" components b/c they contain state of app. Only have a few > easier to maintain 
@@ -70,12 +71,13 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person 
+            return <ErrorBoundary key={person.id}>
+            <Person 
             click={() => this.deletePersonHandler(index)}
             name={person.name} 
             age={person.age} 
-            key={person.id}
             changed={(event) => this.nameChangedHandler(event, person.id)}/>
+            </ErrorBoundary>
           })}
         </div>
       );
